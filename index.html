@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47547438-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-47547438-4');
+    </script>
+    <title>Bag End Interest Survey</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="container pt-2" id="app" v-cloak>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-xs-12">
+          <h4 class="pt-3 text-center">
+            Bag End Interest Survey
+          </h4>
+          <img src="banner.png" class="img-fluid mb-3">
+          <div class="card" v-if="submitted">
+            <div class="card-header">
+              Thank you!
+            </div>
+            <div class="card-body">
+              Your input and time is appreciated to the max!
+            </div>
+          </div>
+          <form v-if="showQuestion">
+            <div class="card">
+              <div class="card-header">
+                {{ current.text }}
+              </div>
+              <ul class="list-group list-group-flush">
+
+                <li class="list-group-item"
+                  v-if="current.type === 'radio'"
+                  v-for="option in current.options"
+                  v-bind:class="{ active: currentInput.value === option.id }">
+                  <div class="form-group form-check mb-0">
+                    <input type="radio" class="form-check-input ml-0" 
+                      v-model="currentInput.value"
+                      v-bind:id="option.id"
+                      v-bind:value="option.id">
+                    <label class="form-check-label" v-bind:for="option.id">
+                      {{ option.text }}
+                    </label>
+                  </div>
+                  <div class="pa-3" v-if="option.info && currentInput.value === option.id" v-html="option.info"></div>
+                  <div class="form-group mt-3" v-if="option.comments && currentInput.value === option.id">
+                    <textarea class="form-control" rows="2" v-model="currentInput[option.id + '_comments']"></textarea>
+                  </div>
+                </li>
+
+                <li class="list-group-item"
+                  v-if="current.type === 'checks'"
+                  v-for="option in current.options"
+                  v-bind:class="{ active: currentInput[option.id] }">
+                  <div class="form-group form-check mb-0">
+                    <input type="checkbox" class="form-check-input ml-0" 
+                      v-model="currentInput[option.id]" 
+                      v-bind:id="option.id">
+                    <label class="form-check-label" v-bind:for="option.id">
+                      {{ option.text }}
+                    </label>
+                  </div>
+                  <div class="pa-3" v-if="option.info && currentInput[option.id]" v-html="option.info"></div>
+                  <div class="form-group mt-3" v-if="option.comments && currentInput[option.id]">
+                    <textarea class="form-control" rows="2" v-model="currentInput[option.id + '_comments']"></textarea>
+                  </div>
+                </li>
+                
+              </ul>
+              
+            </div>
+
+            <div class="text-center p-3">
+              <button type="button" class="btn btn-secondary"
+                v-bind:disabled="!hasPrev"
+                v-on:click="prev">
+                <span aria-hidden="true">&laquo;</span>
+                Prev
+              </button>
+              <button type="button" class="btn btn-primary"
+                v-if="current.submit"
+                v-on:click="submit">Submit</button>
+              <button type="button" class="btn btn-secondary"
+                v-if="!current.submit"
+                v-bind:disabled="!hasNext"
+                v-on:click="next">
+                Next
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>   
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
