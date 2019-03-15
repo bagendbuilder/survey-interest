@@ -336,7 +336,11 @@ new Vue({
 
       gtag('event', 'Submitted');
 
+      props.at = firebase.firestore.Timestamp.now();
+
       db.collection('surveys').add(props);
+
+      delete props.at;
 
       var summary = db.collection('surveys').doc('summary');
 
