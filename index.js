@@ -13,23 +13,29 @@ new Vue({
         type: 'radio',
         options: [{
           id: 'a', text: 'Yes, I would want to visit it in some capacity',
-          next: 'q1a1'
+          next: 'q1a1',
+          event: 'Interest - Yes'
         }, {
           id: 'b', text: 'No, I would not be interested in visiting it at all',
-          next: 'q1b1'
+          next: 'q1b1',
+          event: 'Interested - No'
         }]
       },
       q1a1: {
         text: 'In what capacity would you want to visit it?',
         type: 'checks',
         options: [{
-          id: 'a', text: 'For a site tour'
+          id: 'a', text: 'For a site tour',
+          event: 'Interested - Tour'
         }, {
-          id: 'b', text: 'To stay one or more nights'
+          id: 'b', text: 'To stay one or more nights',
+          event: 'Interested - Stay'
         }, {
-          id: 'c', text: 'To rent it out for an event (company, wedding, etc)'
+          id: 'c', text: 'To rent it out for an event (company, wedding, etc)',
+          event: 'Interested - Event'
         }, {
           id: 'd', text: 'Other (please specify)',
+          event: 'Interested - Other',
           comments: true
         }],
         next: 'q1a2'
@@ -39,10 +45,12 @@ new Vue({
         type: 'radio',
         options: [{
           id: 'a', text: 'Yes, I would pay money to a fundraiser for something in return.',
-          next: 'q1a2a1'
+          next: 'q1a2a1',
+          event: 'Fundraise - Yes'
         }, {
           id: 'b', text: 'No, I would not participate in a fundraiser but I could still see myself visiting or staying.',
-          next: 'q1a3'
+          next: 'q1a3',
+          event: 'Fundraise - No'
         }]
       },
       q1a2a1: {
@@ -60,11 +68,14 @@ new Vue({
         text: 'Check all that apply',
         type: 'checks',
         options: [{
-          id: 'a', text: 'I would want to visit'
+          id: 'a', text: 'I would want to visit',
+          event: 'Fundraise - Visit'
         }, {
-          id: 'b', text: 'I would want to enter in a queue so when it\'s ready I could book my stay'
+          id: 'b', text: 'I would want to enter in a queue so when it\'s ready I could book my stay',
+          event: 'Fundraise - Stay'
         }, {
-          id: 'c', text: 'I would want to register a large event there'
+          id: 'c', text: 'I would want to register a large event there',
+          event: 'Fundraise - Event'
         }],
         next: 'q1a2a2'
       },
@@ -72,9 +83,11 @@ new Vue({
         text: 'Check all that apply',
         type: 'checks',
         options: [{
-          id: 'a', text: 'I would still support it financially for something smaller in return'
+          id: 'a', text: 'I would still support it financially for something smaller in return',
+          event: 'Fundraise - No - Small'
         }, {
-          id: 'b', text: 'I would still support it financially because if possible I would want to visit it in the future'
+          id: 'b', text: 'I would still support it financially because if possible I would want to visit it in the future',
+          event: 'Fundraise - No - Potential'
         }],
         next: 'q1a2a2'
       },
@@ -82,17 +95,23 @@ new Vue({
         text: 'What\'s the earliest point in the process would you join the fundraising campaign?',
         type: 'radio',
         options: [{
-          id: 'a', text: 'At any point'
+          id: 'a', text: 'At any point',
+          event: 'Support - Anytime'
         }, {
-          id: 'b', text: 'After every single thing being constructed has detailed plans (the main structure, trimming, 100+ pieces of furniture, etc)'
+          id: 'b', text: 'After every single thing being constructed has detailed plans (the main structure, trimming, 100+ pieces of furniture, etc)',
+          event: 'Support - Planned'
         }, {
-          id: 'c', text: '... and after a good portion of the furniture is already assembled'
+          id: 'c', text: '... and after a good portion of the furniture is already assembled',
+          event: 'Support - Furniture'
         }, {
-          id: 'd', text: '... and after the piece of land has been purchased'
+          id: 'd', text: '... and after the piece of land has been purchased',
+          event: 'Support - Land'
         }, {
-          id: 'e', text: '... and after construction of the main structure has started'
+          id: 'e', text: '... and after construction of the main structure has started',
+          event: 'Support - Started'
         }, {
-          id: 'f', text: '... and once Bag End is mostly completed'
+          id: 'f', text: '... and once Bag End is mostly completed',
+          event: 'Support - Mostly'
         }],
         next: 'q1a2a3'
       },
@@ -101,9 +120,11 @@ new Vue({
         type: 'radio', 
         options: [{
           id: 'a', text: 'Yes (please enter email below)',
+          event: 'Updates - Yes',
           comments: true
         }, {
-          id: 'b', text: 'No thank you'
+          id: 'b', text: 'No thank you',
+          event: 'Updates - No'
         }],
         next: 'q1a3'
       },
@@ -112,6 +133,7 @@ new Vue({
         type: 'radio',
         options: [{
           id: 'a', text: 'Yes',
+          event: 'Follow - Yes',
           info: '<ul>' + 
             '<li>' + 
               '<a class="text-light" href="https://www.youtube.com/channel/UCWUFdr-3OqNJ0QpV2jxCDfw" target="_blank">YouTube</a>' +
@@ -124,7 +146,8 @@ new Vue({
             '</li>' + 
             '</ul>'
         }, {
-          id: 'b', text: 'No'
+          id: 'b', text: 'No',
+          event: 'Follow - No'
         }],
         submit: true
       },
@@ -132,11 +155,14 @@ new Vue({
         text: 'Why wouldn\'t you be interested?',
         type: 'checks',
         options: [{
-          id: 'a', text: 'I\'m not that big of a fan'
+          id: 'a', text: 'I\'m not that big of a fan',
+          event: 'No - Not Fan'
         }, {
-          id: 'b', text: 'The location is too far away'
+          id: 'b', text: 'The location is too far away',
+          event: 'No - Too Far'
         }, {
           id: 'c', text: 'Other (please specify)',
+          event: 'No - Other',
           comments: true
         }],
         submit: true
@@ -254,10 +280,9 @@ new Vue({
               }
               selected.push(text);
 
-              gtag('event', o.text, {
-                event_category: q.text,
-                event_label: comments
-              });
+              if (o.event) {
+                gtag('event', o.event, {event_label: comments});
+              }
             }
           }
   
@@ -266,6 +291,8 @@ new Vue({
           }
         }
       }
+
+      gtag('event', 'Submitted');
 
       console.log(results);
     }
