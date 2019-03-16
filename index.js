@@ -124,11 +124,15 @@ new Vue({
           event: 'Support - Land',
           property: 'support_land'
         }, {
-          id: 'e', text: '... and after construction of the main structure has started',
+          id: 'e', text: '... and after building permit is obtained',
+          event: 'Support - Permit',
+          property: 'support_permit'
+        }, {
+          id: 'f', text: '... and after construction of the main structure has started',
           event: 'Support - Started',
           property: 'support_started'
         }, {
-          id: 'f', text: '... and once Bag End is mostly completed',
+          id: 'g', text: '... and once Bag End is mostly completed',
           event: 'Support - Mostly',
           property: 'support_mostly'
         }],
