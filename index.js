@@ -9,7 +9,7 @@ new Vue({
     question: 'q1',
     questions: {
       q1: {
-        text: 'If there was an exact interior and exterior replica of Bag End as seen in the movies in Pennsylvania US, would you be interested in visiting it?',
+        text: 'If there was an exact interior and exterior replica of Bag End as seen in the movies in Pennsylvania US, would you be interested in visiting it? (human scale, you would be able to stay/party in it)',
         type: 'radio',
         options: [{
           id: 'a', text: 'Yes, I would want to visit it in some capacity',
